@@ -10,27 +10,23 @@
 def rotate_word(message, key)
   new_message = ''
   message.downcase!
-  message.each do |m|
-    new_ord = key + ord(letter)
+  message_array = message.split('')
+  message_array.each do |m|
+    new_ord = key + m[0].ord
     if new_ord > 122
-      new_ord = new_ord -26
-      new_letter = chr(new_ord)
+      new_ord = new_ord - 26
+      new_letter = new_ord.chr
     else
-      new_letter = chr(new_ord)
-      new_message = new_message + new_letter
+      new_letter = new_ord.chr
     end
+    new_message = new_message + new_letter
   end
   return new_message.downcase
 end
-
-rotate_word('abc', 1 )
-rotate_word('abc', 10 )
-rotate_word('python', 13)
-rotate_word('ruby', 13)
 
 words = ['abc', 'python', 'ruby', 'unladen swallow']
 
 puts "*** Messages encrypted in ROT13 ***"
 words.each do |word|
-    puts "#{word}:  #{rotate_word(word, 13)}"
+    puts "#{word}: #{rotate_word(word, 13)}"
 end
