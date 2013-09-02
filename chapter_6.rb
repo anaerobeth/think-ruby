@@ -16,9 +16,9 @@ end
 
 def is_palindrome?(word)
   if word.length <= 1
-    return true
+    return 'True'
   elsif first_letter(word) != last_letter(word)
-    return false
+    return 'False'
   else
     return is_palindrome?(middle(word))
   end
